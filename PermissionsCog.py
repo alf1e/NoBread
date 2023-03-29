@@ -36,7 +36,6 @@ class PermissionsCog(ModuleCog):
     def create_permissions(self, permission_name: str) -> str:
         if self._check_module(permission_name, False):
             raise ValueError("Permission name must start with module id")
-        print(self.module_id)
 
         if self._cursor.execute("SELECT permission_name FROM permissions WHERE permission_name = ?", (permission_name,)).fetchone():
             return permission_name
